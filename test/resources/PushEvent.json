@@ -1,0 +1,77 @@
+{
+  "eventKey": "repo:refs_changed",
+  "date": "2020-05-07T15:49:07+0200",
+  "actor": {
+    "name": "B041336",
+    "emailAddress": "david.weber@baloise.ch",
+    "id": 15363,
+    "displayName": "Weber, David",
+    "active": true,
+    "slug": "b041336",
+    "type": "NORMAL",
+    "links": {
+      "self": [
+        {
+          "href": "https://bitbucket.balgroupit.com/users/b041336"
+        }
+      ]
+    }
+  },
+  "repository": {
+    "slug": "integration-services-non-prod",
+    "id": 3279,
+    "name": "integration-services-non-prod",
+    "description": "Non-Prod Applications Integration Services",
+    "hierarchyId": "c52093cbacf286bd089f",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "DPL",
+      "id": 916,
+      "name": "deployments",
+      "description": "Team Application Deployment Config Repositorys for OpenShift",
+      "public": true,
+      "type": "NORMAL",
+      "links": {
+        "self": [
+          {
+            "href": "https://bitbucket.balgroupit.com/projects/DPL"
+          }
+        ]
+      }
+    },
+    "public": true,
+    "links": {
+      "clone": [
+        {
+          "href": "ssh://git@bitbucket.balgroupit.com/dpl/integration-services-non-prod.git",
+          "name": "ssh"
+        },
+        {
+          "href": "https://bitbucket.balgroupit.com/scm/dpl/integration-services-non-prod.git",
+          "name": "http"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://bitbucket.balgroupit.com/projects/DPL/repos/integration-services-non-prod/browse"
+        }
+      ]
+    }
+  },
+  "changes": [
+    {
+      "ref": {
+        "id": "refs/heads/master",
+        "displayId": "master",
+        "type": "BRANCH"
+      },
+      "refId": "refs/heads/master",
+      "fromHash": "3fd917bbe8172eaf099622a3c2f8bbecbc9d53ea",
+      "toHash": "5f77703615318db6163810b993f1b355ea297cad",
+      "type": "UPDATE"
+    }
+  ]
+}

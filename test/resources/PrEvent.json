@@ -1,0 +1,158 @@
+{
+  "eventKey": "pr:opened",
+  "date": "2020-05-11T11:49:31+0200",
+  "actor": {
+    "name": "B039499",
+    "emailAddress": "kevin.duss@baloise.ch",
+    "id": 4362,
+    "displayName": "Duss, Kevin",
+    "active": true,
+    "slug": "b039499",
+    "type": "NORMAL",
+    "links": {
+      "self": [
+        {
+          "href": "https://bitbucket.balgroupit.com/users/b039499"
+        }
+      ]
+    }
+  },
+  "pullRequest": {
+    "id": 44,
+    "version": 0,
+    "title": "Feat/EIS-412 booking month",
+    "description": "* [EIS-412] Added initial value and input formatting to booking month field\r\n* [EIS-412] Returning the booking month and date of the latest active event in the contract search\r\n* [EIS-412] Simplified the way of formatting the booking month\r\n* [EIS-412] Added Db2 as data source\r\n* [EIS-412] Removed Db2 as data source",
+    "state": "OPEN",
+    "open": true,
+    "closed": false,
+    "createdDate": 1589190571422,
+    "updatedDate": 1589190571422,
+    "fromRef": {
+      "id": "refs/heads/Feat/EIS-412_booking_month",
+      "displayId": "Feat/EIS-412_booking_month",
+      "latestCommit": "e8e99ee76a0fb6a2054a23fe12dfed5f2bb2b817",
+      "repository": {
+        "slug": "eis-application",
+        "id": 3393,
+        "name": "eis-application",
+        "hierarchyId": "63c90f15f50b52c76727",
+        "scmId": "git",
+        "state": "AVAILABLE",
+        "statusMessage": "Available",
+        "forkable": true,
+        "project": {
+          "key": "EIS",
+          "id": 906,
+          "name": "EIS",
+          "description": "PPIS Ablösung und Übernahme in der ITCH",
+          "public": false,
+          "type": "NORMAL",
+          "links": {
+            "self": [
+              {
+                "href": "https://bitbucket.balgroupit.com/projects/EIS"
+              }
+            ]
+          }
+        },
+        "public": true,
+        "links": {
+          "clone": [
+            {
+              "href": "https://bitbucket.balgroupit.com/scm/eis/eis-application.git",
+              "name": "http"
+            },
+            {
+              "href": "ssh://git@bitbucket.balgroupit.com/eis/eis-application.git",
+              "name": "ssh"
+            }
+          ],
+          "self": [
+            {
+              "href": "https://bitbucket.balgroupit.com/projects/EIS/repos/eis-application/browse"
+            }
+          ]
+        }
+      }
+    },
+    "toRef": {
+      "id": "refs/heads/master",
+      "displayId": "master",
+      "latestCommit": "4f89e8137961b8557555739e92e43bdbc5e19218",
+      "repository": {
+        "slug": "eis-application",
+        "id": 3393,
+        "name": "eis-application",
+        "hierarchyId": "63c90f15f50b52c76727",
+        "scmId": "git",
+        "state": "AVAILABLE",
+        "statusMessage": "Available",
+        "forkable": true,
+        "project": {
+          "key": "EIS",
+          "id": 906,
+          "name": "EIS",
+          "description": "PPIS Ablösung und Übernahme in der ITCH",
+          "public": false,
+          "type": "NORMAL",
+          "links": {
+            "self": [
+              {
+                "href": "https://bitbucket.balgroupit.com/projects/EIS"
+              }
+            ]
+          }
+        },
+        "public": true,
+        "links": {
+          "clone": [
+            {
+              "href": "https://bitbucket.balgroupit.com/scm/eis/eis-application.git",
+              "name": "http"
+            },
+            {
+              "href": "ssh://git@bitbucket.balgroupit.com/eis/eis-application.git",
+              "name": "ssh"
+            }
+          ],
+          "self": [
+            {
+              "href": "https://bitbucket.balgroupit.com/projects/EIS/repos/eis-application/browse"
+            }
+          ]
+        }
+      }
+    },
+    "locked": false,
+    "author": {
+      "user": {
+        "name": "B039499",
+        "emailAddress": "kevin.duss@baloise.ch",
+        "id": 4362,
+        "displayName": "Duss, Kevin",
+        "active": true,
+        "slug": "b039499",
+        "type": "NORMAL",
+        "links": {
+          "self": [
+            {
+              "href": "https://bitbucket.balgroupit.com/users/b039499"
+            }
+          ]
+        }
+      },
+      "role": "AUTHOR",
+      "approved": false,
+      "status": "UNAPPROVED"
+    },
+    "reviewers": [],
+    "participants": [],
+    "links": {
+      "self": [
+        {
+          "href": "https://bitbucket.balgroupit.com/projects/EIS/repos/eis-application/pull-requests/44"
+        }
+      ]
+    }
+  }
+}
