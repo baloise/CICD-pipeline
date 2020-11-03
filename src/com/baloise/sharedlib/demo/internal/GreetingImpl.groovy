@@ -10,7 +10,7 @@ class GreetingImpl implements Greeting {
         this.steps = steps
     }
 
-    String sayHello(name) {
-        return "Hello ${name}"
+    String greet(String name) {
+        return "¡Hola ${name}!"
     }
 }

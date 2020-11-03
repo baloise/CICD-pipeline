@@ -12,7 +12,7 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses
 
 @RunWith(ArchUnitRunner.class)
 @AnalyzeClasses(
-        packages = "com.baloise.jenkinslibrary",
+        packages = "com.baloise.sharedlib",
         importOptions =
                 ImportOption.DoNotIncludeTests.class
 )
