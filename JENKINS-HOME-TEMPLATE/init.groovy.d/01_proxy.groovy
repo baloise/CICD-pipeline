@@ -1,4 +1,6 @@
 import jenkins.model.*
+import java.util.logging.Logger
+Logger log = Logger.getLogger('init.groovy.d')
 
 String proxyConf = System.getProperty("https_proxy") ?: System.getProperty("http_proxy") ?: System.getenv("https_proxy") ?: System.getenv("https_proxy")
 if(proxyConf) {
@@ -8,5 +10,5 @@ if(proxyConf) {
 	final def pc = new hudson.ProxyConfiguration(url.host, url.port, usr, pwd, noProxy, "https://example.com")
 	Jenkins.instance.proxy = pc
 	Jenkins.instance.save()
-	println "Proxy settings updated"	
+	log.info "Proxy settings updated"	
 }
