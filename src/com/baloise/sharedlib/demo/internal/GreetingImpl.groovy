@@ -10,7 +10,8 @@ class GreetingImpl implements Greeting {
         this.steps = steps
     }
 
-    String greet(String name) {
-        return "¡Hola ${name}!"
+    String greet(String name = "Nobody") {
+		if(name) name = " ${name}"
+		return "¡Hola${name}!"
     }
 }

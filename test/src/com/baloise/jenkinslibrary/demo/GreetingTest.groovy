@@ -23,8 +23,17 @@ class GreetingTest {
 
 	@Test
 	void greeting_sayHello_when_name_is_world_then_greeting_is_Hello_World() {
-		String actual = greeting.greet("World")
-		assertThat(actual).isEqualTo("¡Hola World!")
+		assertThat(greeting.greet("World")).isEqualTo("¡Hola World!")
+	}
+	
+	@Test
+	void greeting_sayHello_when_name_is_null_then_greeting_is_fall_back_to_nobody() {
+		assertThat(greeting.greet()).isEqualTo("¡Hola Nobody!")
+	}
+	
+	@Test
+	void greeting_sayHello_when_name_is_empty() {
+		assertThat(greeting.greet("")).isEqualTo("¡Hola!")
 	}
 
 }
