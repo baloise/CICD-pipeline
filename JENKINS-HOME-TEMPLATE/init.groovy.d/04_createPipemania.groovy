@@ -1,15 +1,14 @@
-import jenkins.model.*
-import hudson.*
-import hudson.model.*
 import java.util.logging.Logger
-Logger log = Logger.getLogger('init.groovy.d')
+import org.jenkinsci.plugins.workflow.job.WorkflowJob
+import jenkins.model.*
 
+Logger log = Logger.getLogger('init.groovy.d')
 
 String jobName = 'Pipemania'
 if(Jenkins.instance.getItem(jobName)) {
 	log.info "$jobName already exists"
 } else {
-	def job = Jenkins.instance.createProject(org.jenkinsci.plugins.workflow.job.WorkflowJob, jobName)
+	WorkflowJob job = Jenkins.instance.createProject(org.jenkinsci.plugins.workflow.job.WorkflowJob, jobName)
 	String script = '''
 // use library source from git
 //library 'sharedlib-git@release'
@@ -18,6 +17,8 @@ if(Jenkins.instance.getItem(jobName)) {
 library 'sharedlib@release'
 
 println(greet("el mundo"))
+
+// use this job as playground / notice board in addition to the replay function
 
 '''
 	job.definition = new org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition(script, true)
