@@ -1,0 +1,1 @@
+this is used to run a local Jenkins instance with [https://github.com/baloise/jenkins-maven-plugin](https://github.com/baloise/jenkins-maven-plugin)

@@ -1,0 +1,9 @@
+// use library source from git
+//library 'sharedlib-git@release'
+
+// use library source from disk
+library 'sharedlib@release'
+
+println(greet("el disco duro"))
+
+// use this job as template to develop pipelines for real projects
