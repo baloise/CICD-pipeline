@@ -18,6 +18,13 @@
         <jenkins.version>2.265</jenkins.version>
     </properties>
 
+	<repositories>
+		<repository>
+			<id>jenkins-release</id>
+	      	<name>Jenkins Releases</name>
+		    <url>https://repo.jenkins-ci.org/releases/</url>
+	    </repository>
+	</repositories>
     <dependencies>
         <dependency>
             <groupId>com.cloudbees</groupId>
@@ -71,7 +78,7 @@
         <dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
-			<version>3.0.4</version>
+			<version>2.4.2</version>
 			<scope>provided</scope>
 			<type>pom</type>
 		</dependency>
@@ -84,7 +91,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -125,14 +132,14 @@
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.5</version>
+                <version>1.11.0</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>addSources</goal>
                             <goal>addTestSources</goal>
                             <goal>compile</goal>
-                            <goal>testCompile</goal>
+                            <goal>compileTests</goal>
                         </goals>
                     </execution>
                 </executions>
