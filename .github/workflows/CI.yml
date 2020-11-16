@@ -23,24 +23,12 @@ jobs:
          shell: bash
          run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
          id: extract_branch
-       - name: copy badge
-         run: |
-           mv target/site/linecoverage.svg  /tmp
-       - uses: actions/checkout@master
+       - name: Deploy site
+         uses: JamesIves/github-pages-deploy-action@3.7.1
          with:
-           ref: 'badges'
-       - name: Commit badge
-         env:
-           BRANCH: ${{ steps.extract_branch.outputs.branch }}
-         run: |
-           git config --local user.email "action@github.com"
-           git config --local user.name "GitHub Action"
-           mkdir -p "${BRANCH}"
-           mv /tmp/linecoverage.svg "${BRANCH}"
-           git add "${BRANCH}/linecoverage.svg"
-           git commit -m "Add/Update badge"
-       - name: Push badge commit
-         uses: ad-m/github-push-action@master
-         with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
-           branch: badges
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           BRANCH: gh-pages 
+           FOLDER: target/site
+           TARGET_FOLDER: site/${{ steps.extract_branch.outputs.branch }}
+           
+           
