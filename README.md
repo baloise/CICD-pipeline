@@ -46,4 +46,11 @@ Head over to [http://localhost:8080/](http://localhost:8080/) and use the templa
 ## behind a proxy
 Set `http_proxy` / `no_proxy` properties / environment variables, see [JENKINS-HOME-TEMPLATE/init.groovy.d/01_proxy.groovy](./JENKINS-HOME-TEMPLATE/init.groovy.d/01_proxy.groovy)
 
+
+https://baloise.github.io/CICD-pipeline/site/main/linecoverage.svg
+
 If you need a forwarding proxy, have a look at [https://github.com/baloise/proxy](https://github.com/baloise/proxy#installation) 
+
+
+
+[![Line Coverage](https://baloise.github.io/CICD-pipeline/site/main/linecoverage.svg)](https://baloise.github.io/CICD-pipeline/site/main/jacoco)
