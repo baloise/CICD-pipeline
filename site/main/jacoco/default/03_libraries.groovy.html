@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>03_libraries.groovy</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">cicd-pipeline</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">03_libraries.groovy</span></div><h1>03_libraries.groovy</h1><pre class="source lang-java linenums">import org.jenkinsci.plugins.workflow.libs.*
+import hudson.plugins.filesystem_scm.*
+import jenkins.plugins.git.GitSCMSource;
+import jenkins.model.*
+import java.util.logging.Logger
+<span class="nc" id="L6">Logger log = Logger.getLogger('init.groovy.d')</span>
+
+<span class="nc" id="L8">Properties config = new Properties()</span>
+<span class="nc" id="L9">new File(&quot;.git/config&quot;).withInputStream { config.load it}</span>
+
+
+<span class="nc" id="L12">SCMSourceRetriever retrieverGit = new SCMSourceRetriever(new GitSCMSource(</span>
+<span class="nc" id="L13">		config.url.replaceAll(/\W+/, &quot;&quot;),</span>
+		config.url,
+		&quot;&quot;,
+		&quot;*&quot;,
+		&quot;&quot;,
+		false))
+
+<span class="nc" id="L20">LibraryConfiguration libGit  = new LibraryConfiguration(&quot;sharedlib-git&quot;, retrieverGit)</span>
+<span class="nc" id="L21">libGit.setDefaultVersion(&quot;main&quot;)</span>
+<span class="nc" id="L22">libGit.setImplicit(false)</span>
+
+<span class="nc" id="L24">File sourceFolder = new File(&quot;.&quot;).absoluteFile.parentFile</span>
+<span class="nc" id="L25">SCMRetriever retrieverLocal = new SCMRetriever(new FSSCM(sourceFolder.path, false, false,</span>
+<span class="nc" id="L26">	new FilterSettings(false, [ new FilterSelector(&quot;.*/**&quot;),new FilterSelector(&quot;target/**&quot;), new FilterSelector(&quot;bin/**&quot;)])))</span>
+
+<span class="nc" id="L28">LibraryConfiguration libLocal  = new LibraryConfiguration(&quot;sharedlib&quot;, retrieverLocal)</span>
+<span class="nc" id="L29">libLocal.setDefaultVersion(&quot;release&quot;)</span>
+<span class="nc" id="L30">libLocal.setImplicit(false)</span>
+<span class="nc" id="L31">GlobalLibraries.get().libraries = [libLocal, libGit]</span>
+<span class="nc" id="L32">log.info &quot;Libraries ${[libLocal, libGit].name} registered&quot;</span>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
