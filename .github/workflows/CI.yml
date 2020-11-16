@@ -13,25 +13,23 @@ jobs:
          uses: actions/checkout@master
        - name: Build with Maven
          run: mvn clean test
+       - name: copy badge
+         run: mv target/site/linecoverage.svg /tmp/
        - name: Extract branch name
          shell: bash
          run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
          id: extract_branch
-       - name: copy badge
-         env:
-           BRANCH: ${{ steps.extract_branch.outputs.branch }}
-         run: |
-           mkdir -p "${BRANCH}"
-           mv target/site/linecoverage.svg "${BRANCH}"
+       - name: Commit badge
        - uses: actions/checkout@master
          with:
            ref: 'badges'
-       - name: Commit badge
          env:
            BRANCH: ${{ steps.extract_branch.outputs.branch }}
          run: |
            git config --local user.email "action@github.com"
            git config --local user.name "GitHub Action"
+           mkdir -p "${BRANCH}"
+           mv /tmp/linecoverage.svg "${BRANCH}"
            git add "${BRANCH}/linecoverage.svg"
            git commit -m "Add/Update badge"
        - name: Push badge commit
