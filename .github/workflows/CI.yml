@@ -14,7 +14,8 @@ jobs:
        - name: Build with Maven
          run: mvn clean test
        - name: copy badge
-         run: mv target/site/linecoverage.svg /tmp/
+         run: |
+           mv target/site/linecoverage.svg /tmp/
        - name: Extract branch name
          shell: bash
          run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
