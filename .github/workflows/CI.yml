@@ -27,7 +27,8 @@ jobs:
            git config --local user.email "action@github.com"
            git config --local user.name "GitHub Action"
            mkdir -p "${BRANCH}"
-           mv target/site/linecoverage.svg "${BRANCH}"
+           ls -la
+		   mv target/site/linecoverage.svg "${BRANCH}"
            git add "${BRANCH}/linecoverage.svg"
            git commit -m "Add/Update badge"
        - name: Push badge commit
