@@ -17,6 +17,12 @@ jobs:
          shell: bash
          run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
          id: extract_branch
+       - name: copy badge
+         env:
+           BRANCH: ${{ steps.extract_branch.outputs.branch }}
+         run: |
+           mkdir -p "${BRANCH}"
+           mv target/site/linecoverage.svg "${BRANCH}"
        - uses: actions/checkout@master
          with:
            ref: 'badges'
@@ -26,9 +32,6 @@ jobs:
          run: |
            git config --local user.email "action@github.com"
            git config --local user.name "GitHub Action"
-           mkdir -p "${BRANCH}"
-           ls -la
-           mv target/site/linecoverage.svg "${BRANCH}"
            git add "${BRANCH}/linecoverage.svg"
            git commit -m "Add/Update badge"
        - name: Push badge commit
