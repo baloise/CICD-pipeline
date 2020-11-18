@@ -6,4 +6,5 @@ package com.baloise.sharedlib.common
 // and Mixins are deprecated (http://docs.groovy-lang.org/latest/html/api/groovy/lang/Mixin.html)
 abstract class Registered {
 	Registry registry
+	def steps
 }
