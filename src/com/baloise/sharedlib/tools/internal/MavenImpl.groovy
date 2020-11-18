@@ -9,7 +9,7 @@ class MavenImpl extends Registered implements Maven{
 	public void mvn(String cmd, String mavenVersion = Maven.MAVEN_VERSION_DEFAULT, String jdkVersion = "nope") {
 		//TODO : this is a hack
 		steps.withEnv(["M2_HOME=/opt/maven", "PATH=/opt/maven/bin:/sbin:/usr/sbin:/bin:/usr/bin"]) {
-			steps.sh "mvn $command"
+			steps.sh "mvn $cmd"
 		}
 
 	}
