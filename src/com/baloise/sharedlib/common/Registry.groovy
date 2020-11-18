@@ -6,21 +6,21 @@ import com.cloudbees.groovy.cps.NonCPS
 
 class Registry {
 
-    def serviceRegistry = new HashMap()
+    Map serviceRegistry = [:]
     def steps
-
-    Registry(steps) {
+	
+	Registry(steps) {
         this.steps = steps
-        registerService(Greeting.class, new GreetingImpl(this))
+        registerService(Greeting.class, new GreetingImpl(registry: this))
     }
 
     @NonCPS
     private <T> void registerService(Class<T> serviceClazz, T impl) {
-        serviceRegistry.put(serviceClazz, impl)
+        serviceRegistry[serviceClazz] =  impl
     }
 
     @NonCPS
     <T> T getService(Class<T> serviceClazz) {
-        return (T) this.serviceRegistry.get(serviceClazz)
+        serviceRegistry[serviceClazz]
     }
 }
