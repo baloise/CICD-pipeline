@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MavenImpl.groovy</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">cicd-pipeline</a> &gt; <a href="index.source.html" class="el_package">com.baloise.sharedlib.tools.internal</a> &gt; <span class="el_source">MavenImpl.groovy</span></div><h1>MavenImpl.groovy</h1><pre class="source lang-java linenums">package com.baloise.sharedlib.tools.internal
 
+import java.nio.file.*
+
 import com.baloise.sharedlib.common.Registered
 import com.baloise.sharedlib.tools.Maven
 
@@ -7,15 +9,18 @@ class MavenImpl extends Registered implements Maven{
 
 	@Override
 	public void mvn(String cmd, String mavenVersion = Maven.MAVEN_VERSION_DEFAULT, String jdkVersion = &quot;nope&quot;) {
-		// TODO 
-		// this is a fake-it-until-you-make-it
-		// shall we use https://hub.docker.com/_/maven ?
+<span class="nc" id="L12">		String image = &quot;maven&quot;</span>
 <span class="nc bnc" id="L13" title="All 2 branches missed.">		if(steps.isUnix()) {</span>
-<span class="nc" id="L14">			steps.withEnv([&quot;M2_HOME=/opt/maven&quot;, &quot;PATH=/opt/maven/bin:/sbin:/usr/sbin:/bin:/usr/bin&quot;]) {</span>
-<span class="nc" id="L15">				steps.sh &quot;mvn $cmd&quot;</span>
+<span class="nc" id="L14">			steps.docker.image(image).inside('-v $HOME/.m2:/root/.m2') {</span>
+<span class="nc" id="L15">                sh &quot;mvn $cmd&quot;</span>
 			}
 		} else {
-<span class="nc" id="L18">			steps.bat &quot;mvn $cmd&quot;</span>
+<span class="nc" id="L18">			String sname = &quot;docker-settings.xml&quot;</span>
+			String settings = 
+<span class="nc bnc" id="L20" title="All 2 branches missed.">				Files.exists(Paths.get(System.getProperty(&quot;user.home&quot;), '.m2').toRealPath().resolve(sname)) ? </span>
+				&quot;-s /root/.m2/$sname&quot; : 
+				&quot;&quot;
+<span class="nc" id="L23">			steps.bat &quot;docker run --rm -v \&quot;%cd%\&quot;:/usr/src/mymaven -v \&quot;%userprofile%\\.m2\&quot;:/root/.m2 -w /usr/src/mymaven $image mvn $settings $cmd&quot;</span>
 		}
 	}
 }

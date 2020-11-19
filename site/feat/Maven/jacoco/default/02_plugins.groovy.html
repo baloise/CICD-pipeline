@@ -4,7 +4,7 @@ import hudson.model.*
 import java.util.logging.Logger
 <span class="nc" id="L5">Logger log = Logger.getLogger('init.groovy.d')</span>
 
-<span class="nc" id="L7">def plugins = [&quot;workflow-aggregator&quot;, &quot;filesystem_scm&quot;, &quot;git&quot;, 'pipeline-utility-steps', 'http_request']</span>
+<span class="nc" id="L7">def plugins = [&quot;workflow-aggregator&quot;, &quot;filesystem_scm&quot;, &quot;git&quot;, 'pipeline-utility-steps', 'http_request', 'docker-plugin', 'docker-workflow']</span>
 <span class="nc" id="L8">PluginManager pm = Jenkins.instance.pluginManager</span>
 <span class="nc" id="L9">UpdateCenter uc = Jenkins.instance.updateCenter</span>
 <span class="nc" id="L10">def site = uc.getSite(uc.ID_DEFAULT)</span>
