@@ -12,7 +12,7 @@ class MavenImpl extends Registered implements Maven{
 		String image = "maven"
 		if(steps.isUnix()) {
 			steps.docker.image(image).inside('-v $HOME/.m2:/root/.m2') {
-                sh "mvn $cmd"
+                steps.sh "mvn $cmd"
 			}
 		} else {
 			String sname = "docker-settings.xml"
