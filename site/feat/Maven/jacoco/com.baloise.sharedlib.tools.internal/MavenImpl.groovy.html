@@ -8,19 +8,20 @@ import com.baloise.sharedlib.tools.Maven
 class MavenImpl extends Registered implements Maven{
 
 	@Override
-	public void mvn(String cmd, String mavenVersion = Maven.MAVEN_VERSION_DEFAULT, String jdkVersion = &quot;nope&quot;) {
-<span class="nc" id="L12">		String image = &quot;maven&quot;</span>
-<span class="nc bnc" id="L13" title="All 2 branches missed.">		if(steps.isUnix()) {</span>
-<span class="nc" id="L14">			steps.docker.image(image).inside('-v $HOME/.m2:/root/.m2') {</span>
-<span class="nc" id="L15">                steps.sh &quot;mvn $cmd&quot;</span>
+	// tag see https://hub.docker.com/_/maven
+	public void mvn(String cmd, String tag = &quot;&quot;) {
+<span class="nc bnc" id="L13" title="All 2 branches missed.">		String image = tag ? &quot;maven:$tag&quot; : &quot;maven&quot;</span>
+<span class="nc bnc" id="L14" title="All 2 branches missed.">		if(steps.isUnix()) {</span>
+<span class="nc" id="L15">			steps.docker.image(image).inside('-v $HOME/.m2:/root/.m2') {</span>
+<span class="nc" id="L16">                steps.sh &quot;mvn $cmd&quot;</span>
 			}
 		} else {
-<span class="nc" id="L18">			String sname = &quot;docker-settings.xml&quot;</span>
+<span class="nc" id="L19">			String sname = &quot;docker-settings.xml&quot;</span>
 			String settings = 
-<span class="nc bnc" id="L20" title="All 2 branches missed.">				Files.exists(Paths.get(System.getProperty(&quot;user.home&quot;), '.m2').toRealPath().resolve(sname)) ? </span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">				Files.exists(Paths.get(System.getProperty(&quot;user.home&quot;), '.m2').toRealPath().resolve(sname)) ? </span>
 				&quot;-s /root/.m2/$sname&quot; : 
 				&quot;&quot;
-<span class="nc" id="L23">			steps.bat &quot;docker run --rm -v \&quot;%cd%\&quot;:/usr/src/mymaven -v \&quot;%userprofile%\\.m2\&quot;:/root/.m2 -w /usr/src/mymaven $image mvn $settings $cmd&quot;</span>
+<span class="nc" id="L24">			steps.bat &quot;docker run --rm -v \&quot;%cd%\&quot;:/usr/src/mymaven -v \&quot;%userprofile%\\.m2\&quot;:/root/.m2 -w /usr/src/mymaven $image mvn $settings $cmd&quot;</span>
 		}
 	}
 }
