@@ -12,7 +12,7 @@ class MavenImpl extends Registered implements Maven{
 <span class="nc" id="L12">		String image = &quot;maven&quot;</span>
 <span class="nc bnc" id="L13" title="All 2 branches missed.">		if(steps.isUnix()) {</span>
 <span class="nc" id="L14">			steps.docker.image(image).inside('-v $HOME/.m2:/root/.m2') {</span>
-<span class="nc" id="L15">                sh &quot;mvn $cmd&quot;</span>
+<span class="nc" id="L15">                steps.sh &quot;mvn $cmd&quot;</span>
 			}
 		} else {
 <span class="nc" id="L18">			String sname = &quot;docker-settings.xml&quot;</span>

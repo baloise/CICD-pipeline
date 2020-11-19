@@ -12,4 +12,4 @@ cicd-pipeline,com.baloise.sharedlib.common,Registered,38,27,1,1,0,0,7,4,6,4
 cicd-pipeline,com.baloise.sharedlib.common,Registry,19,102,0,0,1,3,3,2,3,2
 cicd-pipeline,com.baloise.sharedlib.demo.internal,GreetingImpl,12,70,2,4,0,2,2,4,0,3
 cicd-pipeline,com.baloise.sharedlib.tools.internal,MavenImpl,238,5,12,0,6,0,9,1,3,1
-cicd-pipeline,com.baloise.sharedlib.tools.internal,MavenImpl._mvn_closure1,64,0,0,0,1,0,4,0,4,0
+cicd-pipeline,com.baloise.sharedlib.tools.internal,MavenImpl._mvn_closure1,68,0,0,0,1,0,4,0,4,0
