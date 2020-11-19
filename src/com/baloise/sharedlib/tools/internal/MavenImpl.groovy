@@ -8,8 +8,9 @@ import com.baloise.sharedlib.tools.Maven
 class MavenImpl extends Registered implements Maven{
 
 	@Override
-	public void mvn(String cmd, String mavenVersion = Maven.MAVEN_VERSION_DEFAULT, String jdkVersion = "nope") {
-		String image = "maven"
+	// tag see https://hub.docker.com/_/maven
+	public void mvn(String cmd, String tag = "") {
+		String image = tag ? "maven:$tag" : "maven"
 		if(steps.isUnix()) {
 			steps.docker.image(image).inside('-v $HOME/.m2:/root/.m2') {
                 steps.sh "mvn $cmd"
