@@ -1,5 +1,7 @@
 package com.baloise.sharedlib.tools.internal
 
+import java.nio.file.*
+
 import com.baloise.sharedlib.common.Registered
 import com.baloise.sharedlib.tools.Maven
 
@@ -7,15 +9,18 @@ class MavenImpl extends Registered implements Maven{
 
 	@Override
 	public void mvn(String cmd, String mavenVersion = Maven.MAVEN_VERSION_DEFAULT, String jdkVersion = "nope") {
-		// TODO 
-		// this is a fake-it-until-you-make-it
-		// shall we use https://hub.docker.com/_/maven ?
+		String image = "maven"
 		if(steps.isUnix()) {
-			steps.withEnv(["M2_HOME=/opt/maven", "PATH=/opt/maven/bin:/sbin:/usr/sbin:/bin:/usr/bin"]) {
-				steps.sh "mvn $cmd"
+			steps.docker.image(image).inside('-v $HOME/.m2:/root/.m2') {
+                sh "mvn $cmd"
 			}
 		} else {
-			steps.bat "mvn $cmd"
+			String sname = "docker-settings.xml"
+			String settings = 
+				Files.exists(Paths.get(System.getProperty("user.home"), '.m2').toRealPath().resolve(sname)) ? 
+				"-s /root/.m2/$sname" : 
+				""
+			steps.bat "docker run --rm -v \"%cd%\":/usr/src/mymaven -v \"%userprofile%\\.m2\":/root/.m2 -w /usr/src/mymaven $image mvn $settings $cmd"
 		}
 	}
 }
