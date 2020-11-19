@@ -11,7 +11,7 @@
 	</clipPath>
 	<g clip-path="url(#r)">
 		<rect width="61" height="20" fill="#555" />
-		<rect x="61" width="35" height="20" fill="#830900" />
+		<rect x="61" width="35" height="20" fill="#840800" />
 		<rect width="96" height="20" fill="url(#s)" />
 	</g>
 	<g fill="#fff" text-anchor="middle"

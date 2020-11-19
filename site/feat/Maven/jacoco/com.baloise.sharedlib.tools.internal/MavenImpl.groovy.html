@@ -7,11 +7,16 @@ class MavenImpl extends Registered implements Maven{
 
 	@Override
 	public void mvn(String cmd, String mavenVersion = Maven.MAVEN_VERSION_DEFAULT, String jdkVersion = &quot;nope&quot;) {
-		//TODO : this is a hack
-<span class="nc" id="L11">		steps.withEnv([&quot;M2_HOME=/opt/maven&quot;, &quot;PATH=/opt/maven/bin:/sbin:/usr/sbin:/bin:/usr/bin&quot;]) {</span>
-<span class="nc" id="L12">			steps.sh &quot;mvn $cmd&quot;</span>
+		// TODO 
+		// this is a fake-it-until-you-make-it
+		// shall we use https://hub.docker.com/_/maven ?
+<span class="nc bnc" id="L13" title="All 2 branches missed.">		if(steps.isUnix()) {</span>
+<span class="nc" id="L14">			steps.withEnv([&quot;M2_HOME=/opt/maven&quot;, &quot;PATH=/opt/maven/bin:/sbin:/usr/sbin:/bin:/usr/bin&quot;]) {</span>
+<span class="nc" id="L15">				steps.sh &quot;mvn $cmd&quot;</span>
+			}
+		} else {
+<span class="nc" id="L18">			steps.bat &quot;mvn $cmd&quot;</span>
 		}
-
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
