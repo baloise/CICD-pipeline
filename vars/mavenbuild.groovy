@@ -1,6 +1,3 @@
-import ch.basler.devops.ConsoleHandler
-import ch.basler.devops.MavenHandler
-
 def call(input) {
     if (!input) {
         input = [:]
