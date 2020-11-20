@@ -2,7 +2,7 @@
 import com.baloise.sharedlib.demo.Greeting
 import com.baloise.sharedlib.tools.Maven
 
-def call(String cmd, String mavenVersion = Maven.MAVEN_VERSION_DEFAULT, String jdkVersion = &quot;nope&quot;) {
-<span class="nc" id="L6">	new Registry(this).getService(Maven.class).mvn(cmd, mavenVersion, jdkVersion)</span>
+def call(String cmd, String tag = &quot;&quot;) {
+<span class="nc" id="L6">	new Registry(this).getService(Maven.class).mvn(cmd, tag)</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
