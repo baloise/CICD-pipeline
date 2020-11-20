@@ -1,6 +1,7 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 cicd-pipeline,default,mvn,74,0,4,0,1,0,8,0,6,0
 cicd-pipeline,default,05_createPipemania_from_disk,211,0,2,0,15,0,5,0,4,0
+cicd-pipeline,default,mavenbuild,146,0,12,0,11,0,11,0,5,0
 cicd-pipeline,default,greet,71,0,4,0,1,0,8,0,6,0
 cicd-pipeline,default,03_libraries,313,0,0,0,16,0,4,0,4,0
 cicd-pipeline,default,01_proxy,220,0,12,0,10,0,10,0,4,0
