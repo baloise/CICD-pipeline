@@ -1,4 +1,4 @@
-# 6. Depend on linux
+# 5. Depend on linux
 
 Date: 2020-11-02
 
