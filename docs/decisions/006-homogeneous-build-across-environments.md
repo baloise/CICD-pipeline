@@ -13,7 +13,7 @@ In progress
 
 ## Decision
 
-* We make a **pipeline development environment** available to teams.
+* We make a **pipeline development environment** available to teams. See #34
 * The CI server only **build once** per pipeline run, so that the commit hash of the system can be used as reliable reference.
 
 ## Consequences
