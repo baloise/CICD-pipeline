@@ -1,15 +1,10 @@
 package com.baloise.sharedlib.demo.internal
 
+import com.baloise.sharedlib.common.Registered
 import com.baloise.sharedlib.demo.Greeting
 
-class GreetingImpl implements Greeting {
-
-    def steps
-
-    GreetingImpl(steps) {
-        this.steps = steps
-    }
-
+class GreetingImpl extends Registered implements Greeting {
+	
     String greet(String name = "Nobody") {
 		if(name) name = " ${name}"
 		return "¡Hola${name}!"
