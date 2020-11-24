@@ -2,26 +2,27 @@
 
 import com.baloise.sharedlib.demo.Greeting
 import com.baloise.sharedlib.demo.internal.GreetingImpl
+import com.baloise.sharedlib.tools.Maven
+import com.baloise.sharedlib.tools.internal.MavenImpl
 import com.cloudbees.groovy.cps.NonCPS
 
 class Registry {
 
-<span class="nc" id="L9">    def serviceRegistry = new HashMap()</span>
-    def steps
-
-    Registry(steps) {
-<span class="nc" id="L13">        this.steps = steps</span>
-<span class="nc" id="L14">        registerService(Greeting.class, new GreetingImpl(this))</span>
+    Map serviceRegistry = [:]
+	
+	Registry(steps) {
+<span class="fc" id="L14">        registerService(Greeting.class, new GreetingImpl(registry: this, steps: steps))</span>
+<span class="fc" id="L15">        registerService(Maven.class, new MavenImpl(registry: this, steps: steps))</span>
     }
 
     @NonCPS
     private &lt;T&gt; void registerService(Class&lt;T&gt; serviceClazz, T impl) {
-<span class="nc" id="L19">        serviceRegistry.put(serviceClazz, impl)</span>
+<span class="fc" id="L20">        serviceRegistry[serviceClazz] =  impl</span>
     }
 
     @NonCPS
     &lt;T&gt; T getService(Class&lt;T&gt; serviceClazz) {
-<span class="nc" id="L24">        return (T) this.serviceRegistry.get(serviceClazz)</span>
+<span class="nc" id="L25">        serviceRegistry[serviceClazz]</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
