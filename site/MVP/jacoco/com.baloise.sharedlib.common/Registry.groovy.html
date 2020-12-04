@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Registry.groovy</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">cicd-pipeline</a> &gt; <a href="index.source.html" class="el_package">com.baloise.sharedlib.common</a> &gt; <span class="el_source">Registry.groovy</span></div><h1>Registry.groovy</h1><pre class="source lang-java linenums">package com.baloise.sharedlib.common
+
+import com.baloise.sharedlib.demo.Greeting
+import com.baloise.sharedlib.demo.internal.GreetingImpl
+import com.baloise.sharedlib.tools.Maven
+import com.baloise.sharedlib.tools.internal.MavenImpl
+import com.cloudbees.groovy.cps.NonCPS
+
+class Registry {
+
+    Map serviceRegistry = [:]
+	
+	Registry(steps) {
+<span class="fc" id="L14">        registerService(Greeting.class, new GreetingImpl(registry: this, steps: steps))</span>
+<span class="fc" id="L15">        registerService(Maven.class, new MavenImpl(registry: this, steps: steps))</span>
+    }
+
+    @NonCPS
+    private &lt;T&gt; void registerService(Class&lt;T&gt; serviceClazz, T impl) {
+<span class="fc" id="L20">        serviceRegistry[serviceClazz] =  impl</span>
+    }
+
+    @NonCPS
+    &lt;T&gt; T getService(Class&lt;T&gt; serviceClazz) {
+<span class="nc" id="L25">        serviceRegistry[serviceClazz]</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
