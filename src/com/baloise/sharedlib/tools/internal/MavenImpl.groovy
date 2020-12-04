@@ -8,7 +8,7 @@ import com.baloise.sharedlib.common.FakeItUntilYouMakeIt
 import com.baloise.sharedlib.common.Registered
 import com.baloise.sharedlib.tools.Maven
 
-class MavenImpl extends Registered implements Maven{
+class MavenImpl extends Registered implements Maven, Serializable{
 
 	@Override
 	// tag see https://hub.docker.com/_/maven

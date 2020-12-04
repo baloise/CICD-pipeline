@@ -2,8 +2,8 @@ package com.baloise.jenkinslibrary.demo;
 
 import static org.assertj.core.api.Assertions.assertThat
 
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 import com.baloise.jenkinslibrary.JenkinsMock
 import com.baloise.sharedlib.common.Registry
@@ -13,9 +13,11 @@ import com.baloise.sharedlib.demo.internal.GreetingImpl
 
 class GreetingTest {
 	
+	GreetingTest() {}
+	
 	Greeting greeting
 
-	@Before
+	@BeforeEach
 	void setUp() {
 		greeting = new GreetingImpl(registry:new Registry(JenkinsMock.create()))
 	}
