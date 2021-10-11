@@ -1,3 +1,25 @@
+# this is superseeded by https://github.com/baloise/automagic
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+
+
 # CICD-pipeline
 continuous integration and deployment for applications @ Baloise
 
